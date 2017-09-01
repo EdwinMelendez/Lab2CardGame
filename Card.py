@@ -4,4 +4,4 @@ class Card(object):
         self.suit = suit
 
     def __str__(self):
-        print("%s of %s") % (self.rank, self.suit)
+        print(self.rank + " of " + self.suit)
