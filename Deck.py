@@ -1,19 +1,58 @@
 import random
-import Card
 
+# Adapted from Andy's text book
 
 class Deck:
-    def __init__(self):
-        self.deck = []
-        self.ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
-        self.suits = ["Spades", "Diamonds", "Clubs", "Hearts"]
 
-        for rank in self.ranks:
-            for suit in self.suits:
-                self.deck.append(Card.Card(rank, suit))
+    def create_deck(self):
 
-            random.shuffle(self.deck)
+        # creates dictionary of cards and their values
+        # stored as key-value pairs
+        deck = {'Ace of Spades': 1, '2 of Spades': 2, '3 of Spades': 3, '4 of Spades': 4,
+                '5 of Spades': 5, '6 of Spades': 6, '7 of Spades': 7, '8 of Spades': 8,
+                '9 of Spades': 9, '10 of Spades': 10, 'Jack of Spades': 10, 'Queen of Spades': 10,
+                'King of Spades': 10,
 
-    def printDeck(self):
-        for card in self.deck:
-            print(card.__str__())
+                'Ace of Hearts': 1, '2 of Hearts': 2, '3 of Hearts': 3, '4 of Hearts': 4,
+                '5 of Hearts': 5, '6 of Hearts': 6, '7 of Hearts': 7, '8 of Hearts': 8,
+                '9 of Hearts': 9, '10 of Hearts': 10, 'Jack of Hearts': 10, 'Queen of Hearts': 10,
+                'King of Hearts': 10,
+
+                'Ace of Diamonds': 1, '2 of Diamonds': 2, '3 of Diamonds': 3, '4 of Diamonds': 4,
+                '5 of Diamonds': 5, '6 of Diamonds': 6, '7 of Diamonds': 7, '8 of Diamonds': 8,
+                '9 of Diamonds': 9, '10 of Diamonds': 10, 'Jack of Diamonds': 10, 'Queen of Diamonds': 10,
+                'King of Diamonds': 10,
+
+                'Ace of Clubs': 1, '2 of Clubs': 2, '3 of Clubs': 3, '4 of Clubs': 4,
+                '5 of Clubs': 5, '6 of Clubs': 6, '7 of Clubs': 7, '8 of Clubs': 8,
+                '9 of Clubs': 9, '10 of Clubs': 10, 'Jack of Clubs': 10, 'Queen of Clubs': 10,
+                'King of Clubs': 10}
+
+        # creates a list of deck keys
+       # shuffled_deck = [deck.keys()]
+
+        # shuffles list of keys
+       # random.shuffle(shuffled_deck)
+
+        # returns the shuffled deck
+        return deck
+
+    def deal_card(self, deck, number):
+
+        # accumulator for hand
+        hand_value = 0
+
+        # makes sure the cards being dealt does not exceed the size of the deck
+        if number > len(deck):
+            number = len(deck)
+
+        # deals the cards and their values
+        for count in range(number):
+            card, value = deck.popitem()
+            hand_value += value
+            print(card)
+
+        # print("Your hand: " + hand_value)
+
+
+
