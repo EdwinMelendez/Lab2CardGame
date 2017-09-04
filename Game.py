@@ -5,11 +5,30 @@ import Deck
 
 def turnWinner(playerValue, dealerValue, playerCard, dealerCard):
     if playerValue > dealerValue:
-        playerList.append(playerCard)
+        playerList.extend((playerCard, dealerCard))
     elif playerValue < dealerValue:
-        dealerList.append(dealerCard)
-
-# todo: add a def for war, when each player has the same rank, lays down 3 cards then flips the 4th, winner takes all
+        dealerList.extend((dealerCard, playerCard))
+    elif playerValue == dealerValue:
+        tieBreaker()
+def tieBreaker():
+    #deals six cards each without showing and puts them in a list
+    extraList = []
+    count = 0
+    #deals cards and puts them in a list
+    while (count < 6):
+        Value, Card = deck.deal_card(new_deck, 1)
+        extraList.append(Card)
+        count = count + 1
+    #deals two more cards to determine turn winner
+    playerValue, playerCard = deck.deal_card(new_deck, 1)
+    dealerValue, dealerCard = deck.deal_card(new_deck, 1)
+    #adds 8 cards to the winner
+    if playerValue > dealerValue:
+        playerList.extend((playerCard, dealerCard))
+        playerList.extend(extraList)
+    elif playerValue < dealerValue:
+        dealerList.extend((dealerCard, playerCard))
+        dealerList.extend(extraList)
 
 # todo: also make sure that if the 4th card flipped is the same rank you repeat war til a winner emerges
 # deck instance
@@ -27,7 +46,6 @@ playerValue, playerCard = deck.deal_card(new_deck, 1)
 dealerValue, dealerCard = deck.deal_card(new_deck, 1)
 turnWinner(playerValue, dealerValue, playerCard, dealerCard)
 
-print(playerCard)
-print(dealerCard)
-print(playerList)
+
 print(dealerList)
+print(playerList)
