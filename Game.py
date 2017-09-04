@@ -29,8 +29,11 @@ def tieBreaker():
     elif playerValue < dealerValue:
         dealerList.extend((dealerCard, playerCard))
         dealerList.extend(extraList)
+    elif playerValue == ddealerValue:
+        tieBreaker()
+# todo: keep the game going until the deck runs out
+# todo: add up the cards in each list to determine winner
 
-# todo: also make sure that if the 4th card flipped is the same rank you repeat war til a winner emerges
 # deck instance
 deck = Deck.Deck()
 dealerList = []
