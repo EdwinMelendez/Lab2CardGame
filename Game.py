@@ -11,7 +11,7 @@ def turnWinner(playerValue, dealerValue, playerCard, dealerCard):
     elif playerValue == dealerValue:
         tieBreaker()
 
-        
+
 def tieBreaker():
     # deals six cards each without showing and puts them in a list
     extraList = []
