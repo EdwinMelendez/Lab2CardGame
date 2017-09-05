@@ -53,10 +53,3 @@ class Deck:
             value = deck.pop(card)
             hand_value += value
             return value, card
-
-
-        # print("Your hand: " + hand_value)
-
-
-
-

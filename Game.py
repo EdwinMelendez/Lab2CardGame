@@ -10,26 +10,28 @@ def turnWinner(playerValue, dealerValue, playerCard, dealerCard):
         dealerList.extend((dealerCard, playerCard))
     elif playerValue == dealerValue:
         tieBreaker()
+
+        
 def tieBreaker():
-    #deals six cards each without showing and puts them in a list
+    # deals six cards each without showing and puts them in a list
     extraList = []
     count = 0
-    #deals cards and puts them in a list
-    while (count < 6):
+    # deals cards and puts them in a list
+    while count < 6:
         Value, Card = deck.deal_card(new_deck, 1)
         extraList.append(Card)
         count = count + 1
-    #deals two more cards to determine turn winner
+    # deals two more cards to determine turn winner
     playerValue, playerCard = deck.deal_card(new_deck, 1)
     dealerValue, dealerCard = deck.deal_card(new_deck, 1)
-    #adds 8 cards to the winner
+    # adds 8 cards to the winner
     if playerValue > dealerValue:
         playerList.extend((playerCard, dealerCard))
         playerList.extend(extraList)
     elif playerValue < dealerValue:
         dealerList.extend((dealerCard, playerCard))
         dealerList.extend(extraList)
-    elif playerValue == ddealerValue:
+    elif playerValue == dealerValue:
         tieBreaker()
 # todo: keep the game going until the deck runs out
 # todo: add up the cards in each list to determine winner
