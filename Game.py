@@ -1,7 +1,5 @@
 import Deck
 
-
-
 # determines which 'person' gets to keep the card in each round
 
 def turnWinner(playerValue, dealerValue, playerCard, dealerCard):
@@ -13,15 +11,14 @@ def turnWinner(playerValue, dealerValue, playerCard, dealerCard):
         dealerList.extend((dealerCard, playerCard))
         print("Retreat!")
     elif playerValue == dealerValue:
-        print("Both sides are locked in a head to head battle, make a move!")
-        tieBreaker()
+        print("Both sides are locked in a head to head battle, make a move!(press enter)")
+        tieBreaker([])
 
 
-def tieBreaker():
+def tieBreaker(extraList):
     # deals six cards each without showing and puts them in a list
     #makes sure there are enough cards to play the tie breaker
     if len(new_deck) >= 8:
-        extraList = []
         count = 0
         # deals cards and puts them in a list
         while count < 6:
@@ -42,11 +39,10 @@ def tieBreaker():
             dealerList.extend(extraList)
             print("Your enemy has outflanked you! Run away!")
         elif playerValue == dealerValue:
-            tieBreaker()
+            tieBreaker(extraList)
     #handles if there are not enough cards to play a normal tie breaker
     elif 2 < len(new_deck) < 8:
         numberCards = len(new_deck) -2
-        extraList = []
         count = 0
         # deals cards and puts them in a list
         while count < numberCards:
@@ -54,17 +50,12 @@ def tieBreaker():
             extraList.append(Card)
             count = count + 1
         # deals two more cards to determine turn winner
-            addingTieBreakCards(extraList)
-            print("eight")
-
-    elif len(new_deck) ==2:
-        extraList = []
         addingTieBreakCards(extraList)
-        print("two")
+    elif len(new_deck) ==2:
+        addingTieBreakCards(extraList)
 
 #odd tie breaker function
 def addingTieBreakCards(extraList):
-    extraList = extraList
     playerValue, playerCard = deck.deal_card(new_deck, 1)
     dealerValue, dealerCard = deck.deal_card(new_deck, 1)
     print("You drew a " + playerCard + " Your opponent drew a " + dealerCard)
@@ -92,7 +83,7 @@ def gameWinner():
 deck = Deck.Deck()
 dealerList = []
 playerList = []
-    # creates a new deck object
+# creates a new deck object
 new_deck = deck.create_deck()
 choose = str("Press enter to begin your game of War")
 input(choose)
