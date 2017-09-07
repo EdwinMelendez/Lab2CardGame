@@ -2,6 +2,7 @@ import random
 
 # Adapted from Andy's text book
 
+
 class Deck:
 
     def create_deck(self):
@@ -28,7 +29,6 @@ class Deck:
                 '9 of Clubs': 9, '10 of Clubs': 10, 'Jack of Clubs': 11, 'Queen of Clubs': 12,
                 'King of Clubs': 13}
 
-
         return deck
 
     def deal_card(self, deck, number):
@@ -47,9 +47,9 @@ class Deck:
 
         # deals the cards and their values
         for count in range(number):
-            #grabs a random key from the list
+            # grabs a random key from the list
             card = shuffled_deck.pop()
-            #uses that key to get the value of the card
+            # uses that key to get the value of the card
             value = deck.pop(card)
             hand_value += value
             return value, card
